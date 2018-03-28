@@ -134,7 +134,14 @@ def fwdObstruction():
 	inches = distance * 0.39370078740158         # calculate inches
 	feet = inches / 12                           # calculate feet
 	print("Panic, we are {0:0,.2f} inches from an object".format(inches))
-	satus = MotorOff()
+	status = MotorOff()                          # kill motors
+	sleep(2)                                     # pause for 2 seconds
+	leftSpeed = rightSpeed = leftSpeed = rightSpeed = 20
+	status = reverse(leftSpeed,rightSpeed,leftSpeed,rightSpeed)
+	sleep(2)
+	status = MotorOff()
+	status = 'obstruction'
+	print("WOW...that was close...\n") 
 	return status
 
 #=======================================================================
@@ -300,5 +307,11 @@ while True:
 		distance = SR04.getDist()
 
 		if distance < 10:
-			status = fwdObstruction()
+			if status != 'obstruction':
+				status = fwdObstruction()
+			else:
+				print("Status is: {0}".format(status))
+				status != 'obstruction'
+			sleep(2)
+			
 SR04.stop()
