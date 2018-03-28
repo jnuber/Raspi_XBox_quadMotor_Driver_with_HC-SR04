@@ -8,7 +8,7 @@
 # Tan x(Degree) = x/y (Opposite/Adjacent) /____|
 # Inverse Tan of x/y = Angle-degrees
 #
-# NOTE: This was test using an XBox USB wireless controller.
+# NOTE: This was tested using an XBox USB wireless controller.
 #
 # Upate March 2018 - Added HC-SR04 Sonic sensor module. In this case, 
 #     we are looking to determne if an opbject is within 10cm/4 inches 
