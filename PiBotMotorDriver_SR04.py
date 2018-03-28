@@ -136,8 +136,9 @@ def fwdObstruction():
 	print("Panic, we are {0:0,.2f} inches from an object".format(inches))
 	status = MotorOff()                          # kill motors
 	sleep(2)                                     # pause for 2 seconds
-	leftSpeed = rightSpeed = leftSpeed = rightSpeed = 20
-	status = reverse(leftSpeed,rightSpeed,leftSpeed,rightSpeed)
+	Speed = 20
+	status = reverse(Speed,Speed,Speed,Speed)
+	motorSpeed(Speed,Speed,Speed,Speed)
 	sleep(2)
 	status = MotorOff()
 	status = 'obstruction'
