@@ -240,12 +240,13 @@ while True:
 			if(angle < 0):
 				angle = angle  + 360
 
-			y = abs(y)
-			x = abs(x)
+			yAxis = abs((y/axisMax * 100))
+			xAxis = abs((x/axisMax * 100))
+			
 			# Hard Forward
 			if(angle ==  180):
-				leftSpeed  = (y/axisMax * 100)
-				rightSpeed = (y/axisMax * 100)
+				leftSpeed  = yAxis
+				rightSpeed = yAxis
 				if status != 'forward':
 					status = MotorOff()
 					status = fwd(leftSpeed,rightSpeed,leftSpeed,rightSpeed)
@@ -254,8 +255,8 @@ while True:
 
 			#1/8 Forward Left Turning Angle 
 			if(angle > 100 and angle < 260 and angle != 180):
-				leftSpeed  = (x/axisMax * 100)
-				rightSpeed = (y/axisMax * 100)
+				leftSpeed  = xAxis
+				rightSpeed = yAxis
 				if leftSpeed <=39:
 					leftSpeed = 40	
 				if status != 'forward':
@@ -266,8 +267,8 @@ while True:
 
 			#Hard Left
 			if(angle > 260 and angle < 280):
-				leftSpeed  = (x/axisMax * 100)
-				rightSpeed = (x/axisMax * 100)
+				leftSpeed  = xAxis
+				rightSpeed = xAxis				
 				if status != 'left':
 					status = MotorOff()
 					status = left(leftSpeed,rightSpeed,leftSpeed,rightSpeed)
@@ -276,8 +277,8 @@ while True:
 
 			# Hard Reverse
 			if(angle == 0 ):
-				leftSpeed  = (y/axisMax * 100)
-				rightSpeed = (y/axisMax * 100)
+				leftSpeed  = yAxis
+				rightSpeed = yAxis				
 				if status != 'reverse':
 					status = MotorOff()
 					status = reverse(leftSpeed,rightSpeed,leftSpeed,rightSpeed)
@@ -286,8 +287,8 @@ while True:
 
 			# Reverse turning left
 			if( (angle < 90 or angle > 280) and angle !=0):
-				leftSpeed  = (x/axisMax * 100)
-				rightSpeed = (y/axisMax * 100)
+				leftSpeed  = xAxis
+				rightSpeed = yAxis
 				if status != 'reverse':
 					status = MotorOff()
 					status = reverse(leftSpeed,rightSpeed,leftSpeed,rightSpeed)
@@ -296,8 +297,8 @@ while True:
 
 			#Hard Right Turn
 			if(angle == 90.0):
-				leftSpeed  = (x/axisMax * 100)
-				rightSpeed = (x/axisMax * 100)
+				leftSpeed  = xAxis
+				rightSpeed = xAxis
 				if status != 'right':
 					status = MotorOff()					
 					status = right(leftSpeed,rightSpeed,leftSpeed,rightSpeed)
