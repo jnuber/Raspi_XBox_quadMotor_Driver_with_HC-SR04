@@ -240,10 +240,12 @@ while True:
 			if(angle < 0):
 				angle = angle  + 360
 
+			y = abs(y)
+			x = abs(x)
 			# Hard Forward
 			if(angle ==  180):
-				leftSpeed  = abs((y/axisMax * 100))
-				rightSpeed = abs((y/axisMax * 100))
+				leftSpeed  = (y/axisMax * 100)
+				rightSpeed = (y/axisMax * 100)
 				if status != 'forward':
 					status = MotorOff()
 					status = fwd(leftSpeed,rightSpeed,leftSpeed,rightSpeed)
@@ -252,9 +254,8 @@ while True:
 
 			#1/8 Forward Left Turning Angle 
 			if(angle > 100 and angle < 260 and angle != 180):
-				#leftSpeed  = abs((((y-x) /axisMax) * 100))
-				leftSpeed  = abs((x/axisMax * 100))
-				rightSpeed = abs((y/axisMax * 100))
+				leftSpeed  = (x/axisMax * 100)
+				rightSpeed = (y/axisMax * 100)
 				if leftSpeed <=39:
 					leftSpeed = 40	
 				if status != 'forward':
@@ -265,8 +266,8 @@ while True:
 
 			#Hard Left
 			if(angle > 260 and angle < 280):
-				leftSpeed  = abs((x/axisMax * 100))
-				rightSpeed = abs((x/axisMax * 100))
+				leftSpeed  = (x/axisMax * 100)
+				rightSpeed = (x/axisMax * 100)
 				if status != 'left':
 					status = MotorOff()
 					status = left(leftSpeed,rightSpeed,leftSpeed,rightSpeed)
@@ -275,8 +276,8 @@ while True:
 
 			# Hard Reverse
 			if(angle == 0 ):
-				leftSpeed  = abs((y/axisMax * 100))
-				rightSpeed = abs((y/axisMax * 100))
+				leftSpeed  = (y/axisMax * 100)
+				rightSpeed = (y/axisMax * 100)
 				if status != 'reverse':
 					status = MotorOff()
 					status = reverse(leftSpeed,rightSpeed,leftSpeed,rightSpeed)
@@ -285,8 +286,8 @@ while True:
 
 			# Reverse turning left
 			if( (angle < 90 or angle > 280) and angle !=0):
-				leftSpeed  = abs((x/axisMax * 100))
-				rightSpeed = abs((y/axisMax * 100))
+				leftSpeed  = (x/axisMax * 100)
+				rightSpeed = (y/axisMax * 100)
 				if status != 'reverse':
 					status = MotorOff()
 					status = reverse(leftSpeed,rightSpeed,leftSpeed,rightSpeed)
@@ -295,14 +296,14 @@ while True:
 
 			#Hard Right Turn
 			if(angle == 90.0):
-				leftSpeed  = abs((x/axisMax * 100))
-				rightSpeed = abs((x/axisMax * 100))
+				leftSpeed  = (x/axisMax * 100)
+				rightSpeed = (x/axisMax * 100)
 				if status != 'right':
 					status = MotorOff()					
 					status = right(leftSpeed,rightSpeed,leftSpeed,rightSpeed)
 				motorSpeed(leftSpeed,rightSpeed,leftSpeed,rightSpeed)
 				status = "right"
-
+			
 			print('x: {0:>6.3f} y:{1:>6.3f} = {2:.0f} Degrees Speed(L/R): {3:.2f} : {4:.2f} Status: {5}'.format(abs(x)*100,abs(y)*100,angle,abs(leftSpeed),abs(rightSpeed),status))		
 			
 		distance = SR04.getDist()
